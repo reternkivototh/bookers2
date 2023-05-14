@@ -1,14 +1,22 @@
-<h3>Book detail</h3>
-
-
+<h1>Book detail</h1>
 
 <div>
   <%= image_tag @book.get_image %>
-  <p><%= image_tag 'sample-author1.jpg' %></p>
-  <%= @book.user.name %>
+  <%= link_to user_path(current_user.id) do %>
+    <p><%= @book.user.name %></p
+  <% end %>
   <p><%= @book.title %></p>
   <p><%= @book.opinion %></p>
   <% if @book.user == current_user %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
   <% end %>
 </div>
+
+<h1>New book</h1>
+  <%= form_with model: Book.new do |f| %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Opinion</h4>
+      <%= f.text_area :opinion %>
+    <%= f.submit 'Create Book'%>
+  <% end %>
