@@ -3,11 +3,12 @@
 <div>
   <%= image_tag @book.get_image %>
   <%= link_to user_path(current_user.id) do %>
-    <p><%= @book.user.name %></p
+    <p><%= @book.user.name %></p>
   <% end %>
   <p><%= @book.title %></p>
   <p><%= @book.opinion %></p>
   <% if @book.user == current_user %>
+    <%= link_to "Edit", edit_book_path(@book) %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
   <% end %>
 </div>
