@@ -6,7 +6,7 @@
     <p><%= @book.user.name %></p>
   <% end %>
   <p><%= @book.title %></p>
-  <p><%= @book.opinion %></p>
+  <p><%= @book.body %></p>
   <% if @book.user == current_user %>
     <%= link_to "Edit", edit_book_path(@book) %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
@@ -18,6 +18,6 @@
     <h4>Title</h4>
       <%= f.text_field :title %>
     <h4>Opinion</h4>
-      <%= f.text_area :opinion %>
+      <%= f.text_area :body %>
     <%= f.submit 'Create Book'%>
   <% end %>
