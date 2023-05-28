@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, skip: 'sessions'
+  devise_scope :user do
+    get 'users/sign_in' => 'devise/sessions#new', as: :new_user_session
+    post 'users/sign_in' => 'devise/sessions#create', as: :user_session
+    delete 'users/sign_out' => 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
+  # devise_for :users
   root to: 'homes#top'
   get '/home/about' => 'homes#about', as: 'about'
-  devise_for :users
 
   resources :users, only: [:show, :index, :edit, :update,]
   resources :books, only: [:new, :create, :edit, :update, :destroy, :index, :show]

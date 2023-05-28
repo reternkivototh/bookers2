@@ -20,11 +20,11 @@
         <tbody>
           <tr>
             <td>
-              <%= image_tag @user.get_profile_image(100, 100) %>
               <%= link_to user_path(@book.user.id) do %>
-              <span class="d-block">
-                <%= @book.user.name %>
-              </span>
+                <%= image_tag @user.get_profile_image(100, 100) %>
+                <span class="d-block">
+                  <%= @book.user.name %>
+                </span>
               <% end %>
             </td>
             <td>
